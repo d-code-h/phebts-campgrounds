@@ -1,9 +1,28 @@
-import { MongoClient } from 'mongodb';
+import { MongoClient, ObjectId, WithId, Document } from 'mongodb';
 import data from './data';
 
 // ? Configurations
 const URL = process.env.DB_URL as string; // env
 const client = new MongoClient(URL); // DB client instantiated
+
+interface review {
+  username: string;
+  rating: number;
+  comment: string;
+}
+interface Campground extends WithId<Document> {
+  _id: ObjectId;
+  name: string;
+  location: string;
+  creator: string;
+  description: string;
+  amenities: string[];
+  facilities: string[];
+  capacity: number;
+  price: number;
+  rating: number;
+  reviews: review[];
+}
 
 // * Connect to DB
 const connect = async () => {
@@ -61,10 +80,10 @@ const reset = async () => {
 const allCampgrounds = async () => {
   const collection = await connect();
 
-  if (!collection) return;
+  if (!collection) return false;
 
   try {
-    const campgrounds = await collection.find({}).toArray();
+    const campgrounds = (await collection.find({}).toArray()) as Campground[];
     console.log('======= 💪 All campgrounds found successfully ========');
     return campgrounds;
   } catch (error) {

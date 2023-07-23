@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ObjectId } from 'mongodb';
@@ -8,22 +9,20 @@ interface review {
   comment: string;
 }
 interface Campground {
-  campground: {
-    _id: ObjectId;
-    name: string;
-    location: string;
-    creator: string;
-    description: string;
-    amenities: string[];
-    facilities: string[];
-    capacity: number;
-    price: number;
-    rating: number;
-    reviews: review[];
-  };
+  _id: ObjectId;
+  name: string;
+  location: string;
+  creator: string;
+  description: string;
+  amenities: string[];
+  facilities: string[];
+  capacity: number;
+  price: number;
+  rating: number;
+  reviews: review[];
 }
 
-export default function Grid({ campground }: Campground) {
+const Grid = ({ campground }: { campground: Campground }) => {
   return (
     <div className="w-full sm:w-5/12 md:w-72 border border-purple-500 rounded-md">
       <Image
@@ -53,4 +52,6 @@ export default function Grid({ campground }: Campground) {
       </div>
     </div>
   );
-}
+};
+
+export default Grid;
