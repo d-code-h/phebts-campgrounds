@@ -1,8 +1,9 @@
 import Link from 'next/link';
+import Wrapper from './Wrapper';
 
 export default function Jumbotron() {
   return (
-    <section className="max-w-5xl mx-auto my-0 sm:my-10 p-5 bg-purple-50 rounded-md text-center">
+    <Wrapper>
       <h1 className="text-5xl font-bold tracking-wider leading-tight sm:leading-normal">
         Unplug, Unwind, and Reconnect with Nature&apos;s Serenity
       </h1>
@@ -18,6 +19,6 @@ export default function Jumbotron() {
       >
         Add Campgrounds
       </Link>
-    </section>
+    </Wrapper>
   );
 }
