@@ -3,6 +3,8 @@ const data = [
     name: 'Campground A',
     location: 'City A, State A',
     creator: 'John Doe',
+    image:
+      'https://images.unsplash.com/photo-1487730116645-74489c95b41b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FtcGdyb3VuZHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60',
     description:
       'This is a beautiful campground with scenic views and hiking trails.',
     amenities: ['Fire pit', 'Picnic table', 'Restrooms', 'Water supply'],
@@ -27,6 +29,8 @@ const data = [
     name: 'Campground B',
     location: 'City B, State B',
     creator: 'John Doe',
+    image:
+      'https://images.unsplash.com/photo-1487730116645-74489c95b41b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FtcGdyb3VuZHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60',
     description:
       'A family-friendly campground with playgrounds and fishing spots.',
     amenities: ['Playground', 'Fishing area', 'Restrooms', 'BBQ grills'],
@@ -51,6 +55,8 @@ const data = [
     name: 'Campground C',
     location: 'City C, State C',
     creator: 'John Doe',
+    image:
+      'https://images.unsplash.com/photo-1487730116645-74489c95b41b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FtcGdyb3VuZHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60',
     description:
       'A peaceful campground with a lake and hiking trails. Perfect for nature lovers.',
     amenities: ['Lake', 'Restrooms', 'Picnic area', 'Water supply'],
@@ -75,6 +81,8 @@ const data = [
     name: 'Campground D',
     location: 'City D, State D',
     creator: 'John Doe',
+    image:
+      'https://images.unsplash.com/photo-1487730116645-74489c95b41b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FtcGdyb3VuZHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60',
     description:
       'A beautiful campground with a river and hiking trails. Perfect for nature lovers.',
     amenities: ['River', 'Restrooms', 'Picnic area', 'Water supply'],
@@ -99,6 +107,8 @@ const data = [
     name: 'Campground E',
     location: 'City E, State E',
     creator: 'John Doe',
+    image:
+      'https://images.unsplash.com/photo-1487730116645-74489c95b41b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FtcGdyb3VuZHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60',
     description:
       'A beautiful campground with a river and hiking trails. Perfect for nature lovers.',
     amenities: ['River', 'Restrooms', 'Picnic area', 'Water supply'],
@@ -123,6 +133,8 @@ const data = [
     name: 'Campground F',
     location: 'City F, State F',
     creator: 'John Doe',
+    image:
+      'https://images.unsplash.com/photo-1487730116645-74489c95b41b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FtcGdyb3VuZHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60',
     description:
       'A beautiful campground with a river and hiking trails. Perfect for nature lovers.',
     amenities: ['River', 'Restrooms', 'Picnic area', 'Water supply'],
@@ -147,6 +159,8 @@ const data = [
     name: 'Campground G',
     location: 'City G, State G',
     creator: 'John Doe',
+    image:
+      'https://images.unsplash.com/photo-1487730116645-74489c95b41b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FtcGdyb3VuZHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60',
     description:
       'This is a beautiful campground with scenic views and hiking trails.',
     amenities: ['Fire pit', 'Picnic table', 'Restrooms', 'Water supply'],
@@ -171,6 +185,8 @@ const data = [
     name: 'Campground H',
     location: 'City H, State H',
     creator: 'John Doe',
+    image:
+      'https://images.unsplash.com/photo-1487730116645-74489c95b41b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FtcGdyb3VuZHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60',
     description:
       'A family-friendly campground with playgrounds and fishing spots.',
     amenities: ['Playground', 'Fishing area', 'Restrooms', 'BBQ grills'],
@@ -195,6 +211,8 @@ const data = [
     name: 'Campground I',
     location: 'City I, State I',
     creator: 'John Doe',
+    image:
+      'https://images.unsplash.com/photo-1487730116645-74489c95b41b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FtcGdyb3VuZHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60',
     description:
       'A peaceful campground with a lake and hiking trails. Perfect for nature lovers.',
     amenities: ['Lake', 'Restrooms', 'Picnic area', 'Water supply'],
@@ -219,6 +237,8 @@ const data = [
     name: 'Campground J',
     location: 'City J, State J',
     creator: 'John Doe',
+    image:
+      'https://images.unsplash.com/photo-1487730116645-74489c95b41b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FtcGdyb3VuZHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60',
     description:
       'A beautiful campground with a river and hiking trails. Perfect for nature lovers.',
     amenities: ['River', 'Restrooms', 'Picnic area', 'Water supply'],
@@ -243,6 +263,8 @@ const data = [
     name: 'Campground K',
     location: 'City K, State K',
     creator: 'John Doe',
+    image:
+      'https://images.unsplash.com/photo-1487730116645-74489c95b41b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FtcGdyb3VuZHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60',
     description:
       'A beautiful campground with a river and hiking trails. Perfect for nature lovers.',
     amenities: ['River', 'Restrooms', 'Picnic area', 'Water supply'],
@@ -267,6 +289,8 @@ const data = [
     name: 'Campground L',
     location: 'City L, State ',
     creator: 'John Doe',
+    image:
+      'https://images.unsplash.com/photo-1487730116645-74489c95b41b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FtcGdyb3VuZHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60',
     description:
       'A beautiful campground with a river and hiking trails. Perfect for nature lovers.',
     amenities: ['River', 'Restrooms', 'Picnic area', 'Water supply'],

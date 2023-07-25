@@ -15,6 +15,7 @@ interface Campground extends WithId<Document> {
   name: string;
   location: string;
   creator: string;
+  image: string;
   description: string;
   amenities: string[];
   facilities: string[];
@@ -76,7 +77,7 @@ const reset = async () => {
   }
 };
 
-// TODO: Find all campgrounds
+// * Find all campgrounds
 const allCampgrounds = async () => {
   const collection = await connect();
 
@@ -94,4 +95,24 @@ const allCampgrounds = async () => {
   }
 };
 
-export { seed, reset, allCampgrounds };
+// TODO: Find by id
+const findById = async (id: string) => {
+  const collection = await connect();
+
+  if (!collection) return false;
+
+  try {
+    const campground = (await collection.findOne({
+      _id: new ObjectId(id),
+    })) as Campground;
+    console.log('======= 💪 Campground found successfully ========');
+    return campground;
+  } catch (error) {
+    console.log('********* 😞 Unable to find campground ********');
+    return false;
+  } finally {
+    await client.close();
+  }
+};
+
+export { seed, reset, allCampgrounds, findById };
