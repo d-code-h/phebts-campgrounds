@@ -13,6 +13,7 @@ interface Campground {
   name: string;
   location: string;
   creator: string;
+  image: string;
   description: string;
   amenities: string[];
   facilities: string[];
