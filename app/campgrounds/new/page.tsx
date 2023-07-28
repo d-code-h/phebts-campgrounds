@@ -1,7 +1,14 @@
+import Heading from '../components/Heading';
+import Fields from './components/Fields';
+import Form from './components/Form';
+
 export default function New() {
   return (
     <div>
-      <h1>Add new campground.</h1>
+      <Heading>Add new campground</Heading>
+      <Form>
+        <Fields />
+      </Form>
     </div>
   );
 }
