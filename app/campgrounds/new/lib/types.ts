@@ -17,4 +17,16 @@ interface FieldType {
   placeholder: string;
 }
 
-export type { Options, Props, FieldType };
+interface Data {
+  name: string;
+  location: string;
+  image: string;
+  description: string;
+  amenities: string[];
+  facilities: string[];
+  capacity: string;
+  price: string;
+  rating: string;
+}
+
+export type { Options, Props, FieldType, Data };
