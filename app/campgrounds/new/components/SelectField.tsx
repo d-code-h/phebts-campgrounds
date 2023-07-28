@@ -1,17 +1,15 @@
 'use client';
 
-import { useState, useContext, FC } from 'react';
+import { useContext, Context, FC } from 'react';
 import { SelectionContext } from './Form';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
-import { Props } from '../lib/types';
+import { Props, NewContext } from '../lib/types';
 
 const animatedComponents = makeAnimated();
 
 const SelectField: FC<Props> = ({ name, options, placeholder }) => {
-  const [isClearable, setIsClearable] = useState(true);
-  const [isSearchable, setIsSearchable] = useState(true);
-  const { setAmenities, setFacilities } = useContext(SelectionContext);
+  const { selections } = useContext(SelectionContext as Context<NewContext>);
 
   return (
     <>
@@ -20,12 +18,12 @@ const SelectField: FC<Props> = ({ name, options, placeholder }) => {
         components={animatedComponents}
         closeMenuOnSelect={false}
         classNamePrefix="select"
-        isClearable={isClearable}
-        isSearchable={isSearchable}
+        isClearable={true}
+        isSearchable={true}
         name={name}
         options={options}
         placeholder={placeholder}
-        onChange={name === 'amenities' ? setAmenities : setFacilities}
+        onChange={selections}
         theme={(theme) => ({
           ...theme,
           colors: {

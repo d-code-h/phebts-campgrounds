@@ -1,3 +1,12 @@
+import { ActionMeta, MultiValue } from 'react-select';
+
+type SelectValue = { label: string; value: string };
+
+type HandleSelectChange = (
+  option: MultiValue<SelectValue>,
+  actionMeta: ActionMeta<SelectValue>
+) => void;
+
 interface Options {
   value: string;
   label: string;
@@ -29,4 +38,11 @@ interface Data {
   rating: string;
 }
 
-export type { Options, Props, FieldType, Data };
+interface NewContext {
+  selections: (
+    option: MultiValue<SelectValue>,
+    actionMeta: ActionMeta<SelectValue>
+  ) => void;
+}
+
+export type { Options, Props, FieldType, Data, NewContext, HandleSelectChange };

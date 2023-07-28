@@ -1,32 +1,52 @@
 'use client';
 
-import {
-  ReactNode,
-  useState,
-  createContext,
-  Dispatch,
-  SetStateAction,
-} from 'react';
+import { ReactNode, createContext } from 'react';
+import { NewContext, HandleSelectChange, Data } from '../lib/types';
 import fields from '../lib/fields';
 import axios from 'axios';
 
-interface ContextType {
-  setAmenities: Dispatch<SetStateAction<never[]>>;
-  setFacilities: Dispatch<SetStateAction<never[]>>;
-}
-
-export const SelectionContext = createContext<ContextType | null>(null);
+export const SelectionContext = createContext<NewContext | null>(null);
 
 export default function Form({ children }: { children: ReactNode }) {
-  const [amenities, setAmenities] = useState([]);
-  const [facilities, setFacilities] = useState([]);
+  let selects: {
+    [key: string]: any;
+  } = {};
+
+  const handleSelectChange: HandleSelectChange = (option, { name }) => {
+    if (name !== undefined) {
+      selects[name] = [...option];
+    }
+  };
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+
+    let data: { [key: string]: any } = {};
+
+    fields.forEach(({ id }) => {
+      if (id !== 'amenities' && id !== 'facilities') {
+        data[id] = e.target[id].value.trim();
+      }
+    });
+
+    // Extract the value of amenities and facilities and update data
+    Object.keys(selects).forEach((select) => {
+      data[select] = selects[select].map(
+        ({ value }: { value: string }) => value
+      );
+    });
+
+    console.log(data);
+  };
 
   return (
-    <form className="max-w-md mx-auto mt-8 mb-7 ring-1 ring-purple-300 shadow-lg rounded-md p-5 bg-purple-50  hover:shadow-2xl hover:shadow-purple-200">
+    <form
+      className="max-w-md mx-auto mt-8 mb-7 ring-1 ring-purple-300 shadow-lg rounded-md p-5 bg-purple-50  hover:shadow-2xl hover:shadow-purple-200"
+      onSubmit={handleSubmit}
+    >
       <SelectionContext.Provider
         value={{
-          setAmenities,
-          setFacilities,
+          selections: handleSelectChange,
         }}
       >
         {children}
