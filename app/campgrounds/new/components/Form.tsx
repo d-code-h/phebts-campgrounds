@@ -1,10 +1,21 @@
 'use client';
 
-import { ReactNode, useState, createContext } from 'react';
+import {
+  ReactNode,
+  useState,
+  createContext,
+  Dispatch,
+  SetStateAction,
+} from 'react';
 import fields from '../lib/fields';
 import axios from 'axios';
 
-export const SelectionContext = createContext({});
+interface ContextType {
+  setAmenities: Dispatch<SetStateAction<never[]>>;
+  setFacilities: Dispatch<SetStateAction<never[]>>;
+}
+
+export const SelectionContext = createContext<ContextType | null>(null);
 
 export default function Form({ children }: { children: ReactNode }) {
   const [amenities, setAmenities] = useState([]);
@@ -14,8 +25,8 @@ export default function Form({ children }: { children: ReactNode }) {
     <form className="max-w-md mx-auto mt-8 mb-7 ring-1 ring-purple-300 shadow-lg rounded-md p-5 bg-purple-50  hover:shadow-2xl hover:shadow-purple-200">
       <SelectionContext.Provider
         value={{
-          setAmenities: setAmenities,
-          setFacilities: setFacilities,
+          setAmenities,
+          setFacilities,
         }}
       >
         {children}
