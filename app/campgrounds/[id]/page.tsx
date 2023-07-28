@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation';
 import { findById } from '@/app/lib/db';
 import Wrapper from '../components/Wrapper';
+import Heading from '../components/Heading';
 import Image from 'next/image';
 
 interface Params {
@@ -28,9 +29,7 @@ export default async function Show({ params }: { params: Params }) {
 
   return (
     <>
-      <h1 className="text-purple-500 font-bold text-3xl text-center mt-7 -mb-4 tracking-wider">
-        {campground.name}
-      </h1>
+      <Heading>{campground.name}</Heading>
       <Wrapper>
         <div className="flex justify-between gap-5">
           <Image
