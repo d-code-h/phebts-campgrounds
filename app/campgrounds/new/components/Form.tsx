@@ -5,9 +5,12 @@ import { NewContext, HandleSelectChange, Data } from '../lib/types';
 import fields from '../lib/fields';
 import axios from 'axios';
 
+import { useRouter } from 'next/navigation';
+
 export const SelectionContext = createContext<NewContext | null>(null);
 
 export default function Form({ children }: { children: ReactNode }) {
+  const { push } = useRouter();
   let selects: {
     [key: string]: any;
   } = {};
@@ -18,25 +21,33 @@ export default function Form({ children }: { children: ReactNode }) {
     }
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    let data: { [key: string]: any } = {};
+    let campground: { [key: string]: any } = {};
 
     fields.forEach(({ id }) => {
       if (id !== 'amenities' && id !== 'facilities') {
-        data[id] = e.target[id].value.trim();
+        campground[id] = e.target[id].value.trim();
       }
     });
 
-    // Extract the value of amenities and facilities and update data
+    // Extract the value of amenities and facilities and update campground
     Object.keys(selects).forEach((select) => {
-      data[select] = selects[select].map(
+      campground[select] = selects[select].map(
         ({ value }: { value: string }) => value
       );
     });
 
-    console.log(data);
+    try {
+      const { status } = await axios.post('/campgrounds/new/api', campground);
+
+      if (status === 200) {
+        return push('/campgrounds');
+      }
+    } catch (error) {
+      console.log('Something went wrong!');
+    }
   };
 
   return (
