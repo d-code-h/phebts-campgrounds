@@ -51,9 +51,9 @@ const fields = [
     placeholder: 'Facilities',
   },
   {
-    id: 'desc',
+    id: 'description',
     label: 'Description',
-    name: 'desc',
+    name: 'description',
     placeholder: 'Describe the campground in details here...',
   },
 ];

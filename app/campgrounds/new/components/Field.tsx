@@ -8,7 +8,7 @@ export default function Field({ field }: { field: FieldType }) {
       className={`${
         field.id !== 'amenities' &&
         field.id !== 'facilities' &&
-        field.id !== 'desc' &&
+        field.id !== 'description' &&
         `flex justify-start gap-5 items-baseline text-lg ${
           field.id === 'price' && 'w-6/12 inline-flex'
         } ${field.id === 'rating' && 'inline-flex w-4/12 float-right'}`
@@ -24,7 +24,7 @@ export default function Field({ field }: { field: FieldType }) {
             placeholder={field.placeholder as string}
           />
         </>
-      ) : field.id === 'desc' ? (
+      ) : field.id === 'description' ? (
         <textarea
           className="w-full h-40 p-3 rounded-md text-slate-600 tracking-wider
               border border-purple-200 
