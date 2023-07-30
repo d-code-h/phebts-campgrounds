@@ -22,7 +22,6 @@ const fields = [
 
 export default async function Show({ params: { id } }: { params: Params }) {
   const campground = await findById(id);
-  console.log(campground);
 
   if (!campground) {
     redirect('/campgrounds');

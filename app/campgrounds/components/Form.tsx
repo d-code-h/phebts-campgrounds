@@ -6,6 +6,7 @@ import fields from '../lib/fields';
 import axios from 'axios';
 
 import { useRouter } from 'next/navigation';
+import { ObjectId } from 'mongodb';
 
 export const SelectionContext = createContext<NewContext | null>(null);
 
@@ -48,10 +49,19 @@ export default function Form({
     });
 
     try {
-      const { status } = await axios.post(
-        `/campgrounds/${state}/api`,
-        campground
-      );
+      let status;
+      let res;
+      if (id) {
+        // Update campground
+        res = await axios.put(`/campgrounds/api`, campground, {
+          params: { id: id },
+        });
+        status = res.status;
+      } else {
+        // Create new campground
+        res = await axios.post(`/campgrounds/api`, campground);
+        status = res.status;
+      }
 
       if (status === 200) {
         return push(

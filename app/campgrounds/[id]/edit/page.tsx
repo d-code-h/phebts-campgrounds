@@ -16,12 +16,10 @@ export default async function New({
     redirect(`/campgrounds/${id}`);
   }
 
-  campground._id = await JSON.parse(JSON.stringify(campground._id));
-
   return (
     <div>
       <Heading>Edit {campground.name}</Heading>
-      <Form state="edit">
+      <Form state="edit" id={JSON.parse(JSON.stringify(campground._id))}>
         <Fields campground={campground} />
       </Form>
     </div>
