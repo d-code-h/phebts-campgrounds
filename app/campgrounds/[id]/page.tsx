@@ -2,8 +2,8 @@ import { redirect } from 'next/navigation';
 import { findById } from '@/app/lib/db';
 import Wrapper from '../components/Wrapper';
 import Image from 'next/image';
-import Link from 'next/link';
 import LinkBtn from '../components/LinkBtn';
+import Heading from '../components/Heading';
 
 interface Params {
   id: string;
@@ -30,9 +30,7 @@ export default async function Show({ params: { id } }: { params: Params }) {
 
   return (
     <>
-      <h1 className="text-purple-500 font-bold text-3xl text-center mt-7 mb-4 tracking-wider">
-        {campground.name}
-      </h1>
+      <Heading>{campground.name}</Heading>
       <Wrapper>
         <div className="flex flex-col md:flex-row justify-center items-center gap-5">
           <Image
