@@ -28,19 +28,19 @@ export default async function Show({ params }: { params: Params }) {
 
   return (
     <>
-      <h1 className="text-purple-500 font-bold text-3xl text-center mt-7 -mb-4 tracking-wider">
+      <h1 className="text-purple-500 font-bold text-3xl text-center mt-7 mb-4 tracking-wider">
         {campground.name}
       </h1>
       <Wrapper>
-        <div className="flex justify-between gap-5">
+        <div className="flex flex-col md:flex-row justify-center items-center gap-5">
           <Image
             src={campground.image}
             width={400}
             height={400}
             alt="Campground ground"
-            className="w-1/2 rounded-2xl"
+            className="mx-auto rounded-2xl"
           />
-          <div className="p-5 text-start border-1 rounded-md shadow-xl w-1/2 flex flex-wrap justify-between">
+          <div className="p-5 text-start border-1 rounded-md shadow-xl flex flex-wrap justify-between">
             {fields.map((field: string) =>
               field !== 'Amenities' && field !== 'Facilities' ? (
                 <p
