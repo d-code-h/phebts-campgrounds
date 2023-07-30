@@ -83,3 +83,31 @@ export async function PUT(request: Request) {
     await client.close();
   }
 }
+
+export async function DELETE(request: Request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get('id') as string;
+
+    // Connect to DB
+    const collection = await connect();
+
+    // Exit if connection to DB fail
+    if (!collection) return;
+
+    // Store to DB
+    const res = await collection.deleteOne({ _id: new ObjectId(id) });
+
+    if (res.deletedCount === 0) {
+      return NextResponse.json({ message: 'No campground found!' });
+    }
+    // Respond with a positive message
+    return NextResponse.json({ message: 'Campground Deleted!' });
+  } catch (error) {
+    console.log('Error');
+    console.log(error);
+    return NextResponse.json({ message: 'Something went wrong!' });
+  } finally {
+    await client.close();
+  }
+}
