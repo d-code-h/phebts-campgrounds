@@ -1,7 +1,7 @@
 'use client';
 
 import { useContext, Context, FC } from 'react';
-import { SelectionContext } from './Form';
+import { SelectionContext } from '../components/Form';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 import { Props, NewContext } from '../lib/types';
