@@ -1,8 +1,9 @@
 import { redirect } from 'next/navigation';
 import { findById } from '@/app/lib/db';
 import Wrapper from '../components/Wrapper';
-import Heading from '../components/Heading';
 import Image from 'next/image';
+import LinkBtn from '../components/LinkBtn';
+import Heading from '../components/Heading';
 
 interface Params {
   id: string;
@@ -19,8 +20,8 @@ const fields = [
   'Facilities',
 ];
 
-export default async function Show({ params }: { params: Params }) {
-  const campground = await findById(params.id);
+export default async function Show({ params: { id } }: { params: Params }) {
+  const campground = await findById(id);
   console.log(campground);
 
   if (!campground) {
@@ -31,15 +32,15 @@ export default async function Show({ params }: { params: Params }) {
     <>
       <Heading>{campground.name}</Heading>
       <Wrapper>
-        <div className="flex justify-between gap-5">
+        <div className="flex flex-col md:flex-row justify-center items-center gap-5">
           <Image
             src={campground.image}
             width={400}
             height={400}
             alt="Campground ground"
-            className="w-1/2 rounded-2xl"
+            className="mx-auto rounded-2xl"
           />
-          <div className="p-5 text-start border-1 rounded-md shadow-xl w-1/2 flex flex-wrap justify-between">
+          <div className="p-5 text-start border-1 rounded-md shadow-xl flex flex-wrap justify-between">
             {fields.map((field: string) =>
               field !== 'Amenities' && field !== 'Facilities' ? (
                 <p
@@ -68,6 +69,14 @@ export default async function Show({ params }: { params: Params }) {
                 </p>
               )
             )}
+            <div className="max-w-sm mx-auto flex gap-x-5 justify-center items-center mt-5 mb-2">
+              <LinkBtn status="edit" href={`/campgrounds/${id}/edit`}>
+                Edit
+              </LinkBtn>
+              <LinkBtn status="delete" href={`/campgrounds/${id}/delete`}>
+                Delete
+              </LinkBtn>
+            </div>
           </div>
         </div>
       </Wrapper>
