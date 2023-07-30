@@ -14,6 +14,7 @@ interface Options {
 
 interface Props {
   name: string;
+  value?: string[];
   options: Options[];
   placeholder: string;
 }
@@ -26,16 +27,18 @@ interface FieldType {
   placeholder: string;
 }
 
-interface Data {
+interface Campground {
+  [key: string]: any;
   name: string;
   location: string;
   image: string;
+  creator: string;
   description: string;
   amenities: string[];
   facilities: string[];
-  capacity: string;
-  price: string;
-  rating: string;
+  capacity: number;
+  price: number;
+  rating: number;
 }
 
 interface NewContext {
@@ -45,4 +48,11 @@ interface NewContext {
   ) => void;
 }
 
-export type { Options, Props, FieldType, Data, NewContext, HandleSelectChange };
+export type {
+  Options,
+  Props,
+  FieldType,
+  Campground,
+  NewContext,
+  HandleSelectChange,
+};

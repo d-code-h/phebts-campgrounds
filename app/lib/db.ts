@@ -29,18 +29,14 @@ interface Campground extends WithId<Document> {
 const connect = async () => {
   try {
     await client.connect();
-    console.log('=========================================');
     console.log('======= 🚀 Connection successful ========');
-    console.log('=========================================');
 
     const db = client.db('phebts-campgrounds');
     const collection = db.collection('campgrounds');
 
     return collection;
   } catch (error) {
-    console.log('***************************************');
     console.log('********* 😞 Unable to connect ********');
-    console.log('***************************************');
     return false;
   }
 };

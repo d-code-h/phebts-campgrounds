@@ -2,7 +2,13 @@ import Label from './Label';
 import SelectField from './SelectField';
 import { FieldType, Options } from '../lib/types';
 
-export default function Field({ field }: { field: FieldType }) {
+export default function Field({
+  field,
+  value,
+}: {
+  field: FieldType;
+  value?: string[];
+}) {
   return (
     <div
       className={`${
@@ -22,6 +28,7 @@ export default function Field({ field }: { field: FieldType }) {
             name={field.id}
             options={field.options as Options[]}
             placeholder={field.placeholder as string}
+            value={value}
           />
         </>
       ) : field.id === 'description' ? (
@@ -37,6 +44,7 @@ export default function Field({ field }: { field: FieldType }) {
           name={field.id}
           id={field.id}
           placeholder={field.placeholder}
+          defaultValue={value}
         ></textarea>
       ) : (
         <input
@@ -46,6 +54,7 @@ export default function Field({ field }: { field: FieldType }) {
           id={field.id}
           type={field.type}
           placeholder={field.placeholder}
+          defaultValue={value}
         />
       )}
     </div>
