@@ -4,6 +4,7 @@ import Wrapper from '../components/Wrapper';
 import Image from 'next/image';
 import LinkBtn from '../components/LinkBtn';
 import Heading from '../components/Heading';
+import Delete from './components/Delete';
 
 interface Params {
   id: string;
@@ -11,18 +12,17 @@ interface Params {
 
 const fields = [
   'Creator',
-  'Rating',
   'Location',
-  'Description',
+  'Amenities',
+  'Rating',
   'Capacity',
   'Price',
-  'Amenities',
   'Facilities',
+  'Description',
 ];
 
 export default async function Show({ params: { id } }: { params: Params }) {
   const campground = await findById(id);
-  console.log(campground);
 
   if (!campground) {
     redirect('/campgrounds');
@@ -44,7 +44,7 @@ export default async function Show({ params: { id } }: { params: Params }) {
             {fields.map((field: string) =>
               field !== 'Amenities' && field !== 'Facilities' ? (
                 <p
-                  className="flex gap-4 items-center h-min"
+                  className="flex gap-4 h-min my-2"
                   key={JSON.parse(JSON.stringify(campground._id))}
                 >
                   <span className="text-md font-serif font-bold  text-purple-500">
@@ -56,7 +56,7 @@ export default async function Show({ params: { id } }: { params: Params }) {
                 </p>
               ) : (
                 <p
-                  className="flex gap-5 items-center h-min"
+                  className="flex gap-5 h-min my-2"
                   key={JSON.parse(JSON.stringify(campground._id))}
                 >
                   <span className="text-md font-serif font-bold text-purple-500">
@@ -73,9 +73,7 @@ export default async function Show({ params: { id } }: { params: Params }) {
               <LinkBtn status="edit" href={`/campgrounds/${id}/edit`}>
                 Edit
               </LinkBtn>
-              <LinkBtn status="delete" href={`/campgrounds/${id}/delete`}>
-                Delete
-              </LinkBtn>
+              <Delete id={id} />
             </div>
           </div>
         </div>
