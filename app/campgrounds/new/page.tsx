@@ -6,7 +6,7 @@ export default function New() {
   return (
     <div>
       <Heading>Add new campground</Heading>
-      <Form>
+      <Form state="new">
         <Fields />
       </Form>
     </div>

@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactNode, createContext } from 'react';
-import { NewContext, HandleSelectChange, Data } from '../lib/types';
+import { NewContext, HandleSelectChange } from '../lib/types';
 import fields from '../lib/fields';
 import axios from 'axios';
 
@@ -9,7 +9,15 @@ import { useRouter } from 'next/navigation';
 
 export const SelectionContext = createContext<NewContext | null>(null);
 
-export default function Form({ children }: { children: ReactNode }) {
+export default function Form({
+  state,
+  id,
+  children,
+}: {
+  state: string;
+  id?: string;
+  children: ReactNode;
+}) {
   const { push } = useRouter();
   let selects: {
     [key: string]: any;
@@ -40,10 +48,15 @@ export default function Form({ children }: { children: ReactNode }) {
     });
 
     try {
-      const { status } = await axios.post('/campgrounds/new/api', campground);
+      const { status } = await axios.post(
+        `/campgrounds/${state}/api`,
+        campground
+      );
 
       if (status === 200) {
-        return push('/campgrounds');
+        return push(
+          `${state === 'new' ? '/campgrounds' : `/campgrounds/${id}`}`
+        );
       }
     } catch (error) {
       console.log('Something went wrong!');
@@ -67,7 +80,7 @@ export default function Form({ children }: { children: ReactNode }) {
         className="ring-1 ring-purple-500 rounded-md px-2 py-1 text-xl text-purple-500 font-semibold tracking-wide hover:bg-purple-500 hover:text-white hover:shadow-xl focus:outline-none focus:bg-purple-500 focus:text-white focus:shadow-xl block mt-3 mx-auto"
         type="submit"
       >
-        Add
+        {state === 'new' ? 'Add' : 'Update'}
       </button>
     </form>
   );
