@@ -71,7 +71,7 @@ export default async function Show({ params: { id } }: { params: Params }) {
                 </p>
               )
             )}
-            <div>
+            <div className="max-w-sm mx-auto flex gap-x-5 justify-center items-center mt-5 mb-2">
               <LinkBtn status="edit" href={`/campgrounds/${id}/edit`}>
                 Edit
               </LinkBtn>
