@@ -5,6 +5,7 @@ import Image from 'next/image';
 import LinkBtn from '../components/LinkBtn';
 import Heading from '../components/Heading';
 import Delete from './components/Delete';
+import Link from 'next/link';
 
 interface Params {
   id: string;
@@ -80,6 +81,12 @@ export default async function Show({ params: { id } }: { params: Params }) {
       </Wrapper>
       <Wrapper>
         <h2>Comment Section</h2>
+        <Link
+          className="ring-2 ring-purple-500 rounded-md px-3 py-2 block mt-10 mb-2 text-xl text-purple-500 w-max mx-auto font-semibold tracking-wide hover:bg-purple-500 hover:text-white hover:shadow-xl focus:outline-none focus:bg-purple-500 focus:text-white focus:shadow-xl"
+          href="/campgrounds/new"
+        >
+          Add Campgrounds
+        </Link>
       </Wrapper>
     </>
   );
