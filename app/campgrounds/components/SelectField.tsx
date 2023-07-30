@@ -8,7 +8,7 @@ import { Props, NewContext } from '../lib/types';
 
 const animatedComponents = makeAnimated();
 
-const SelectField: FC<Props> = ({ name, options, placeholder }) => {
+const SelectField: FC<Props> = ({ name, options, placeholder, value }) => {
   const { selections } = useContext(SelectionContext as Context<NewContext>);
 
   return (
@@ -23,6 +23,9 @@ const SelectField: FC<Props> = ({ name, options, placeholder }) => {
         name={name}
         options={options}
         placeholder={placeholder}
+        defaultValue={
+          value && options.filter((option) => value.includes(option.value))
+        }
         onChange={selections}
         theme={(theme) => ({
           ...theme,
