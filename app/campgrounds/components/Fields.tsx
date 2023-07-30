@@ -3,9 +3,6 @@ import Field from './Field';
 import { Campground } from '../lib/types';
 
 export default function Fields({ campground }: { campground?: Campground }) {
-  console.log('====================================');
-  console.log(campground);
-  console.log('====================================');
   return (
     <>
       {fields.map((field) => (

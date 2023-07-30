@@ -32,12 +32,12 @@ const Grid = ({ campground }: { campground: Campground }) => {
         alt="Campground image"
         className="w-full"
       />
-      <div className="p-3">
+      <div className=" h-auto p-3">
         <section className="flex justify-between">
           <h3 className="font-bold">{campground.name}</h3>
           <span className="text-slate-500">{campground.location}</span>
         </section>
-        <p className="my-2">{campground.description}</p>
+        <p className="my-2">{campground.description.slice(0, 100)}...</p>
         <div className="flex justify-between items-center">
           <span className="flex text-slate-500 italic">
             {campground.creator}
