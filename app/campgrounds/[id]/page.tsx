@@ -5,6 +5,7 @@ import Image from 'next/image';
 import LinkBtn from '../components/LinkBtn';
 import Heading from '../components/Heading';
 import Delete from './components/Delete';
+import BigButton from '../components/BigButton';
 
 interface Params {
   id: string;
@@ -80,6 +81,9 @@ export default async function Show({ params: { id } }: { params: Params }) {
       </Wrapper>
       <Wrapper>
         <h2>Comment Section</h2>
+        <BigButton status='comment' href={`/campgrounds/${id}/comments/new`}>
+          Add Comment
+        </BigButton>
       </Wrapper>
     </>
   );

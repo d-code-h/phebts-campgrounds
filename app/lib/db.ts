@@ -91,16 +91,35 @@ const allCampgrounds = async () => {
   }
 };
 
-// TODO: Find by id
-const findById = async (id: string) => {
+// * Find by id
+const findById = async (
+  id: string,
+  filter?: {
+    _id?: number;
+    name?: number;
+  }
+) => {
   const collection = await connect();
 
   if (!collection) return false;
 
   try {
-    const campground = (await collection.findOne({
-      _id: new ObjectId(id),
-    })) as Campground;
+    let campground;
+    if (filter) {
+      campground = (await collection.findOne(
+        {
+          _id: new ObjectId(id),
+        },
+        {
+          projection: filter,
+        }
+      )) as Campground;
+    } else {
+      campground = (await collection.findOne({
+        _id: new ObjectId(id),
+      })) as Campground;
+    }
+
     console.log('======= 💪 Campground found successfully ========');
     return campground;
   } catch (error) {
