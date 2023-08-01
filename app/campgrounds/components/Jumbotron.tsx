@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import Wrapper from './Wrapper';
+import BigButton from '../components/BigButton';
 
 export default function Jumbotron() {
   return (
@@ -13,12 +13,9 @@ export default function Jumbotron() {
         streams, and awe-inspiring landscapes, we invite you to rediscover the
         beauty of simplicity and the joy of connecting with the great outdoors.
       </p>
-      <Link
-        className="ring-2 ring-purple-500 rounded-md px-3 py-2 block mt-10 mb-2 text-xl text-purple-500 w-max mx-auto font-semibold tracking-wide hover:bg-purple-500 hover:text-white hover:shadow-xl focus:outline-none focus:bg-purple-500 focus:text-white focus:shadow-xl"
-        href="/campgrounds/new"
-      >
-        Add Campgrounds
-      </Link>
+      <BigButton status="campground" href="/campgrounds/new">
+        Add Campground
+      </BigButton>
     </Wrapper>
   );
 }
