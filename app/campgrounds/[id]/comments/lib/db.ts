@@ -31,9 +31,9 @@ const connect = async () => {
     await client.connect();
     console.log('======= 🚀 Connection successful ========');
 
-    const db = client.db('phebts-comments');
+    const db = client.db('phebts-campgrounds');
     const collection = db.collection('comments');
-
+    console.log(collection);
     return collection;
   } catch (error) {
     console.log('********* 😞 Unable to connect ********');
@@ -42,13 +42,17 @@ const connect = async () => {
 };
 
 // * Find all comments
-const allComments = async () => {
+const allComments = async (id: string) => {
   const collection = await connect();
 
   if (!collection) return false;
 
   try {
-    const comments = (await collection.find({}).toArray()) as Comment[];
+    console.log(id);
+    const comments = (await collection
+      .find({ campgroundId: id })
+      .toArray()) as Comment[];
+
     console.log('======= 💪 All comments found successfully ========');
     return comments;
   } catch (error) {

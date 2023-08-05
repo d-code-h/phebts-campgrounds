@@ -29,6 +29,7 @@ export async function POST(request: Request) {
 
     // Add creator data
     data.creator = 'David';
+    data.lastModified = new Date().toISOString();
     // data.image =
     //   'https://images.unsplash.com/photo-1487730116645-74489c95b41b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FtcGdyb3VuZHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60';
 
