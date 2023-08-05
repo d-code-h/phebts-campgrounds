@@ -25,7 +25,7 @@ export default async function Edit({
   return (
     <div>
       <Heading>{name}</Heading>
-      <Form>
+      <Form id={id}>
         {/* Comment input field */}
         <Field value="as" />
 
