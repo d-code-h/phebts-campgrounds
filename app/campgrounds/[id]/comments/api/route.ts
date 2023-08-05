@@ -10,7 +10,7 @@ const connect = async () => {
     await client.connect();
 
     const db = client.db('phebts-campgrounds');
-    return db.collection('campgrounds');
+    return db.collection('comments');
   } catch (error) {
     console.log(error);
   }
@@ -38,7 +38,7 @@ export async function POST(request: Request) {
     console.log(res);
 
     // Respond with a positive message
-    return NextResponse.json({ message: 'New campground added' });
+    return NextResponse.json({ message: 'New comment added' });
   } catch (error) {
     return NextResponse.json({ message: 'Something went wrong!' });
   } finally {
@@ -50,7 +50,7 @@ export async function PUT(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const id = searchParams.get('id') as string;
-    // Collect campground info
+    // Collect comment info
     const data = await request.json();
 
     // Connect to DB
@@ -69,11 +69,11 @@ export async function PUT(request: Request) {
     console.log(res);
 
     if (res.modifiedCount === 0) {
-      return NextResponse.json({ message: 'No campground found!' });
+      return NextResponse.json({ message: 'No comment found!' });
     }
 
     // Respond with a positive message
-    return NextResponse.json({ message: 'Campground Updated!' });
+    return NextResponse.json({ message: 'Comment Updated!' });
   } catch (error) {
     console.log('Error');
     console.log(error);
@@ -98,10 +98,10 @@ export async function DELETE(request: Request) {
     const res = await collection.deleteOne({ _id: new ObjectId(id) });
 
     if (res.deletedCount === 0) {
-      return NextResponse.json({ message: 'No campground found!' });
+      return NextResponse.json({ message: 'No comment found!' });
     }
     // Respond with a positive message
-    return NextResponse.json({ message: 'Campground Deleted!' });
+    return NextResponse.json({ message: 'Comment Deleted!' });
   } catch (error) {
     console.log('Error');
     console.log(error);
