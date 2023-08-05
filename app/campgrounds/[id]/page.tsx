@@ -36,7 +36,6 @@ export default async function Show({ params: { id } }: { params: Params }) {
     }
 
     comments = (await allComments(id)) as Comment[];
-    console.log(comments);
   } catch (error) {
     console.log(error);
     redirect('/campgrounds');
@@ -125,7 +124,7 @@ export default async function Show({ params: { id } }: { params: Params }) {
                   >
                     Edit
                   </LinkBtn>
-                  <Delete id={id} />
+                  <Delete id={id} commentId={JSON.parse(JSON.stringify(_id))} />
                 </div>
               </div>
             ))

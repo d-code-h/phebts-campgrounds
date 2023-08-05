@@ -31,7 +31,6 @@ export default function Form({
       } else {
         res = await axios.post(`/campgrounds/${id}/comments/api`, data);
       }
-      console.log(res);
       if (res.status === 200) {
         push(`/campgrounds/${id}`);
       }
