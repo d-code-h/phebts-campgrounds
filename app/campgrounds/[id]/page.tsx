@@ -6,6 +6,9 @@ import LinkBtn from '../components/LinkBtn';
 import Heading from '../components/Heading';
 import Delete from './components/Delete';
 import BigButton from '../components/BigButton';
+import { allComments } from './comments/lib/db';
+import { Comment } from './comments/lib/types';
+import { Campground } from '../lib/types';
 
 interface Params {
   id: string;
@@ -23,9 +26,19 @@ const fields = [
 ];
 
 export default async function Show({ params: { id } }: { params: Params }) {
-  const campground = await findById(id);
+  let campground: Campground;
+  let comments: Comment[] = [];
+  try {
+    campground = (await findById(id)) as Campground;
 
-  if (!campground) {
+    if (!campground) {
+      redirect('/campgrounds');
+    }
+
+    comments = (await allComments(id)) as Comment[];
+    console.log(comments);
+  } catch (error) {
+    console.log(error);
     redirect('/campgrounds');
   }
 
@@ -80,10 +93,48 @@ export default async function Show({ params: { id } }: { params: Params }) {
         </div>
       </Wrapper>
       <Wrapper>
-        <h2>Comment Section</h2>
-        <BigButton status='comment' href={`/campgrounds/${id}/comments/new`}>
+        <Heading>Comments</Heading>
+        <BigButton status="comment" href={`/campgrounds/${id}/comments/new`}>
           Add Comment
         </BigButton>
+
+        <div>
+          {comments.length > 0 ? (
+            comments.map(({ _id, text, creator, lastModified }) => (
+              <div
+                key={JSON.parse(JSON.stringify(_id))}
+                className="bg-purple-100 rounded-md p-5 my-5"
+              >
+                <div className="flex flex-wrap justify-between ">
+                  <p className="basis-full text-left text-xs text-slate-500">
+                    {lastModified}
+                  </p>
+
+                  <p>{text}</p>
+                  <p>
+                    <strong>{creator}</strong>
+                  </p>
+                </div>
+
+                <div className="space-x-5 text-left my-2">
+                  <LinkBtn
+                    status="edit"
+                    href={`/campgrounds/${id}/comments/${JSON.parse(
+                      JSON.stringify(_id)
+                    )}/edit`}
+                  >
+                    Edit
+                  </LinkBtn>
+                  <Delete id={id} />
+                </div>
+              </div>
+            ))
+          ) : (
+            <div>
+              <p className="text-xl">No comments yet</p>
+            </div>
+          )}
+        </div>
       </Wrapper>
     </>
   );

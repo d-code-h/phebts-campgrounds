@@ -10,6 +10,7 @@ export default function Field({ value }: { value?: string }) {
       border border-purple-200 caret-purple-800 hover:border-purple-500 focus:outline-none focus:border-none focus:ring-2 
               shadow-purple-300 focus:ring-purple-500 mb-3 focus:shadow-lg placeholder:text-sm`}
         id="comment"
+        name="text"
         type="text"
         placeholder={`${value ? 'Modify your comment' : 'Add a new comment'}`}
         defaultValue={value}

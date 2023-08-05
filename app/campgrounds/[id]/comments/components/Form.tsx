@@ -16,7 +16,7 @@ export default function Form({
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const data = {
-      comment: e.target.comment.value.trim(),
+      text: e.target.text.value.trim(),
       campgroundId: id,
     };
 
