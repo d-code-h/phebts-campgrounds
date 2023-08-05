@@ -48,7 +48,6 @@ const allComments = async (id: string) => {
   if (!collection) return false;
 
   try {
-    console.log(id);
     const comments = (await collection
       .find({ campgroundId: id })
       .toArray()) as Comment[];

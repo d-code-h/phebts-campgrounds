@@ -4,18 +4,30 @@ import React from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
-export default function Delete({ id }: { id: string }) {
+export default function Delete({
+  id,
+  commentId,
+}: {
+  id: string;
+  commentId?: string;
+}) {
   const { push } = useRouter();
 
   const handleClick = async () => {
     try {
-      const res = await axios.delete(`/campgrounds/api`, {
-        params: { id },
-      });
-      console.log(res);
+      let res;
+      if (commentId) {
+        res = await axios.delete(`/campgrounds/${id}/comments/api`, {
+          params: { commentId },
+        });
+      } else {
+        res = await axios.delete(`/campgrounds/api`, {
+          params: { id },
+        });
+      }
 
       if (res.status === 200) {
-        push('/campgrounds');
+        push(`/campgrounds/${id}`);
       } else {
         console.log('Something went wrong');
       }

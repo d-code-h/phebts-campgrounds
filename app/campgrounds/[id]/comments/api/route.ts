@@ -36,8 +36,6 @@ export async function POST(request: Request) {
     // Store to DB
     const res = await collection.insertOne(data);
 
-    console.log(res);
-
     // Respond with a positive message
     return NextResponse.json({ message: 'New comment added' });
   } catch (error) {
@@ -70,7 +68,6 @@ export async function PUT(request: Request) {
         },
       }
     );
-    console.log(res);
 
     if (res.modifiedCount === 0) {
       return NextResponse.json({ message: 'No comment found!' });
@@ -90,7 +87,7 @@ export async function PUT(request: Request) {
 export async function DELETE(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const id = searchParams.get('id') as string;
+    const id = searchParams.get('commentId') as string;
 
     // Connect to DB
     const collection = await connect();
