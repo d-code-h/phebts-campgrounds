@@ -6,9 +6,11 @@ import axios from 'axios';
 
 export default function Form({
   id,
+  commentId,
   children,
 }: {
   id: string;
+  commentId?: string;
   children: ReactNode;
 }) {
   const { push } = useRouter();
@@ -21,7 +23,14 @@ export default function Form({
     };
 
     try {
-      const res = await axios.post(`/campgrounds/${id}/comments/api`, data);
+      let res;
+      if (commentId) {
+        res = await axios.put(`/campgrounds/${id}/comments/api`, data, {
+          params: { commentId },
+        });
+      } else {
+        res = await axios.post(`/campgrounds/${id}/comments/api`, data);
+      }
       console.log(res);
       if (res.status === 200) {
         push(`/campgrounds/${id}`);

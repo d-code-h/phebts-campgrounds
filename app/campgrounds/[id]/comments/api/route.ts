@@ -50,7 +50,7 @@ export async function POST(request: Request) {
 export async function PUT(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const id = searchParams.get('id') as string;
+    const id = searchParams.get('commentId') as string;
     // Collect comment info
     const data = await request.json();
 
@@ -64,7 +64,10 @@ export async function PUT(request: Request) {
     const res = await collection.updateOne(
       { _id: new ObjectId(id) },
       {
-        $set: data,
+        $set: {
+          ...data,
+          lastModified: new Date().toISOString(),
+        },
       }
     );
     console.log(res);

@@ -34,7 +34,7 @@ export default async function Edit({
   return (
     <div>
       <Heading>{name}</Heading>
-      <Form id={id}>
+      <Form id={id} commentId={commentId}>
         {/* Comment input field */}
         <Field value={text} />
 
