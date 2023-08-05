@@ -25,7 +25,7 @@ export default async function New({
   return (
     <div>
       <Heading>{name}</Heading>
-      <Form>
+      <Form id={id}>
         {/* Comment input field */}
         <Field />
 
