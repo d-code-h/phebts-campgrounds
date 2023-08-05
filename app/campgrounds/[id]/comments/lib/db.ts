@@ -1,4 +1,5 @@
 import { MongoClient, ObjectId, WithId, Document } from 'mongodb';
+import { Filter } from './types';
 // import data from './data';
 
 // ? Configurations
@@ -33,7 +34,6 @@ const connect = async () => {
 
     const db = client.db('phebts-campgrounds');
     const collection = db.collection('comments');
-    console.log(collection);
     return collection;
   } catch (error) {
     console.log('********* 😞 Unable to connect ********');
@@ -64,15 +64,21 @@ const allComments = async (id: string) => {
 };
 
 // * Find by id
-const findById = async (id: string) => {
+const findById = async (id: string, filter: Filter) => {
   const collection = await connect();
 
   if (!collection) return false;
 
   try {
-    const comment = (await collection.findOne({
-      _id: new ObjectId(id),
-    })) as Comment;
+    const comment = (await collection.findOne(
+      {
+        _id: new ObjectId(id),
+      },
+      {
+        projection: filter,
+      }
+    )) as Comment;
+    console.log(comment);
     console.log('======= 💪 Comment found successfully ========');
     return comment;
   } catch (error) {
