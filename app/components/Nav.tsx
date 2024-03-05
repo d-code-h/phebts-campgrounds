@@ -8,17 +8,17 @@ import {
 export default function Nav() {
   const { isAuthenticated } = getKindeServerSession();
   return (
-    <nav>
+    <nav className="text-3xl">
       {isAuthenticated() ? (
-        <LogoutLink className="text-xl text-purple-500 font-semibold px-2 py-1 rounded-md ring-purple-500 hover:ring-2 focus:outline-none focus:ring-2">
+        <LogoutLink className="text-purple-500 font-semibold px-2 py-1 rounded-md ring-purple-500 hover:ring-2 focus:outline-none focus:ring-2">
           Log out
         </LogoutLink>
       ) : (
         <>
-          <LoginLink className="text-xl text-purple-500 font-semibold px-2 py-1 rounded-md ring-purple-500 hover:ring-2 focus:outline-none focus:ring-2">
+          <LoginLink className="text-purple-500 font-semibold px-2 py-1 rounded-md ring-purple-500 hover:ring-2 focus:outline-none focus:ring-2">
             Sign in
           </LoginLink>
-          <RegisterLink className="text-xl text-purple-500 font-semibold px-2 py-1 rounded-md ring-purple-500 hover:ring-2 focus:outline-none focus:ring-2">
+          <RegisterLink className="text-purple-500 font-semibold px-2 py-1 rounded-md ring-purple-500 hover:ring-2 focus:outline-none focus:ring-2">
             Sign up
           </RegisterLink>
         </>
