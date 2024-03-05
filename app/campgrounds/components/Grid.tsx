@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { ObjectId } from 'mongodb';
 import LinkBtn from './LinkBtn';
+import clsx from 'clsx';
 
 interface review {
   username: string;
@@ -24,14 +25,20 @@ interface Campground {
 
 const Grid = ({ campground }: { campground: Campground }) => {
   return (
-    <div className="w-full sm:w-5/12 md:w-72 border border-purple-500 rounded-md">
+    <div
+      className={clsx(
+        'w-full sm:w-5/12 md:w-72 ring-1 ring-purple-500 rounded-md hover:shadow-xl hover:ring-2 hover:scale-105 transition-all'
+      )}
+    >
       <Image
-        src={campground.image}
+        // src="https://images.unsplash.com/photo-1533873984035-25970ab07461?q=80&w=1174&auto=format&fit=crop&q=60"
+        src={campground.image.slice(0, campground.image.indexOf('60'))}
         height={400}
         width={400}
         alt="Campground image"
         className="w-full"
       />
+
       <div className=" h-auto p-3">
         <section className="flex justify-between">
           <h3 className="font-bold">{campground.name}</h3>

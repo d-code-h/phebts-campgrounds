@@ -36,7 +36,11 @@ export default function Form({
 
     fields.forEach(({ id }) => {
       if (id !== 'amenities' && id !== 'facilities') {
-        campground[id] = e.target[id].value.trim();
+        if (id === 'image') {
+          campground[id] = e.target[id].value.trim().slice(0, 91);
+        } else {
+          campground[id] = e.target[id].value.trim();
+        }
       }
     });
 
